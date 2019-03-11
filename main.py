@@ -19,4 +19,5 @@ transform = new_matrix()
 # print
 # print_matrix( make_rotZ(math.pi/4) )
 
-parse_file( 'script', edges, transform, screen, color )
+print("This doesn't work")
+#parse_file( 'script', edges, transform, screen, color )
