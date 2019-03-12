@@ -9,18 +9,17 @@ z0  z1  ... zn
 """
 import math
 
-def make_bezier():
-    pass
+def make_bezier(p0,p1,p2,p3):
+    a=(3*p1)-(3*p2)-p0+p3
+    b=(3*p0)-(6*p1)+(3*p2)
+    c=(3*p1)-(3*p0)
+    d=p0
+    new_matrix=[a,b,c,d]
+    return new_matrix
 
-def make_hermite():
-    pass
-
-def generate_curve_coefs( p0, p1, p2, p3,t):
-    pass
-
-def generate_hermite_coefs( p0, p1, r0, r1,t):
+def make_hermite(p0, p1, r0, r1):
     new_matrix=[p0,p1,r0,r1]
-    matrix_mult([[2,-3,0,1],[-2,3,0,0],[1,-2,1,0],[1,-1,0,0]])
+    matrix_mult([[2,-3,0,1],[-2,3,0,0],[1,-2,1,0],[1,-1,0,0]],new_matrix)
     return new_matrix
 
 def make_translate( x, y, z ):

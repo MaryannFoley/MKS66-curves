@@ -3,12 +3,17 @@ from matrix import *
 
 
 def add_circle( points, cx, cy, cz, r, step ):
+
     pass
 
 def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
     if curve_type == "hermite":
-        pass
-    pass
+        coefsx=make_hermite(x0,x1,x2,x3)
+        coefsy=make_hermite(y0,y1,y2,y3)
+    else:
+        coefsx=make_bezier(x0,x1,x2,x3)
+        coefsy=make_bezier(y0,y1,y2,y3)
+
 
 
 def draw_lines( matrix, screen, color ):
