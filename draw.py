@@ -3,16 +3,37 @@ from matrix import *
 
 
 def add_circle( points, cx, cy, cz, r, step ):
+    step=1/steps
+    t=0
+    tangle=0
+    while t < 1:
+        #polar coordinates (sort of)
+        x0=r*math.cos(tangle)+cx
+        y0=r*math.sin(tangle)+cy
+        t+=step
+        tangle=t*math.pi*2
+        x1=r*math.cos(tangle)+cx
+        y1=r*math.sin(tangle)+cy
+        add_edge(points,x0,y0,x1,y1)
 
     pass
 
-def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
+def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, steps, curve_type ):
     if curve_type == "hermite":
         coefsx=make_hermite(x0,x1,x2,x3)
         coefsy=make_hermite(y0,y1,y2,y3)
     else:
         coefsx=make_bezier(x0,x1,x2,x3)
         coefsy=make_bezier(y0,y1,y2,y3)
+    step=1/steps
+    t=0
+    while step<1:
+        x0 = coefsx[0]*(t**3) + coefsx[1]*(t**2) + coefsx[2]*t + coefsx[3]
+        y0 = coefsy[0]*(t**3) + coefsy[1]*(t**2) + coefsy[2]*t + coefsy[3]
+        t = t + step
+        x1 = coefsx[0]*(t**3) + coefsx[1]*(t**2) + coefsx[2]*t + coefsx[3]
+        y1 = coefsy[0]*(t**3) + coefsy[1]*(t**2) + coefsy[2]*t + coefsy[3]
+        add_edge(points,x0,y0,0,x1,y1,0)
 
 
 
